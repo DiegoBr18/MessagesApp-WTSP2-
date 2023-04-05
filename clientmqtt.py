@@ -9,10 +9,9 @@ ssl_context = ssl.SSLContext()
 broker = 'c22669d8fc044b09a5439b33a1ec4d86.s2.eu.hivemq.cloud'
 port = 8883
 topic = "topic"
-# generate client ID with pub prefix randomly
+
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
-# username = 'emqx'
-# password = 'public'
+
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         print("Connected to MQTT Broker!")
@@ -27,9 +26,8 @@ client.tls_set_context(ssl_context)
 client.loop_start()
 
 
-# cria a janela
 janela = tk.Tk()
-janela.geometry("300x300") # define o tamanho da janela
+janela.geometry("300x300") 
 def publish(client, message):
     result = client.publish(topic, message)
     # result: [0, 1]
@@ -39,8 +37,7 @@ def publish(client, message):
     else:
         print(f"Failed to send message to topic {topic}")
 
-# cria os botões
-# cria os botões
+
 botao_up_left = tk.Button(janela, text="Up Left", command=lambda: publish(client, "ul"), width=10, height=5, bg="orange", fg="white")
 botao_up_left.grid(row=0, column=0)
 
@@ -68,5 +65,4 @@ botao_down.grid(row=2, column=1)
 botao_down_right = tk.Button(janela, text="Down Right", command=lambda: publish(client, "dr"), width=10, height=5, bg="orange", fg="white")
 botao_down_right.grid(row=2, column=2)
 
-# inicia o loop da janela
 janela.mainloop()
