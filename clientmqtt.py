@@ -1,7 +1,6 @@
 import random
 import time
 import paho.mqtt.client as mqtt
-import tkinter
 import ssl
 import tkinter as tk
 
