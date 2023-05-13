@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script>
+        localStorage.setItem("login", "false")
+    </script>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="icon" type="image/png"
+        href="https://icones.pro/wp-content/uploads/2021/02/icone-du-logo-whatsapp-violet.png" />
+</head>
+
+<body>
+    <h1 id="text">Cadastro</h1>
+    <div id="mainBox">
+        <div id = "content">
+        <div id>
+            <h2>Usuário: </h2><input type="text" placeholder="nome de usuario" id="username" class="texto">
+        </div>
+        <div>
+            <h2>Senha: </h2><input type="password" id="password" placeholder="sua senha" class="texto">
+        </div>
+        <div>
+            <h2>Telefone: </h2><input type="tel" id="password" placeholder="seu telefone" class="texto">
+        </div>
+        <input type="button" value="Cadastro" id="login_button">
+    </div>
+    </div>
+
+
+    <h3 id="pergunta">Já tem um conta<strong> <a id="cadastrel" href="index.html">faça
+                login</a></strong></h3>
+
+    <script src="fb.js" type="module"></script>
+</body>
+
+</html>

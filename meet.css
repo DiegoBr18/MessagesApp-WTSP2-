@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@100&family=Public+Sans:wght@100&display=swap');
+body{
+    margin: 0px;
+    font-family:  Pathway Extreme, public sans;
+    margin-left: 3%;
+    font-size: 5vh;
+}
+
+#top{
+    height: 20vh;
+    width: 80vw;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 15% 30% 55%;
+    grid-template-rows: 50% 50%;
+    grid-template-areas: 
+    "i s s"
+    "b b b";
+}
+
+
+
+#top input{
+    width: 80vw;
+    grid-area: b;
+}
+
+#top img{
+    grid-area: i;
+}
+#top p{
+    grid-area: s;
+}
+#fotop{
+    margin-top: 2vh;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    margin-bottom: 1.5vw;
+}
+
+#corpo{
+    height: 80vh;
+    width: 90vw;
+    box-shadow: 1px 1px 5px 1px black;
+    margin:auto;
+}
