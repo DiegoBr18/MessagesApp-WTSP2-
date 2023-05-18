@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
-import { getDatabase, ref, push, get, set, onChildAdded, query, equalTo, onValue} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import { initializeApp} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+import { getAnalytics} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js";
+import { getDatabase, ref, push, get, set, child, onChildAdded, query, equalTo, onValue} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,10 +17,15 @@ const firebaseConfig = {
     measurementId: "G-MPLZCHELB5"
 };
 
+
 // Initialize Firebase
+
+const input_get_image = document.querySelector("#get-image")
+const btn_confirm_image = document.querySelector("#confirm-image")
+var image_selection_display = document.querySelector("#image-selection")
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
+var img_confirmed = false
 const database = getDatabase(app)
 
 const usersRef = ref(database, "users")
@@ -38,15 +43,37 @@ function register() {
       const userExists = Object.values(users).some(
         (user) => user.username === username
       );
-
       if (userExists) {
         alert("O usuário já esta cadastrado");
       } else {
-        const newUserRef = push(usersRef);
-        set(newUserRef, {
-          username: username,
-          password: password,
-        });
+        alert("Cadastro realizado com sucesso")
+          
+        image_selection_display.style.display = "grid"
+        
+
+        const storageRef = storageUse.ref().child('images')
+
+        const fileRef = storageRef.child("Nomezindecria.png")
+        alert(fileRef)
+
+        btn_confirm_image.addEventListener("click", ()=>{
+          let image = input_get_image.files[0]
+          alert(image)
+          const newUserRef = push(usersRef);
+          set(newUserRef, {
+            username: username,
+            password: password,
+            image: "Oi"
+          });
+          window.location.href = "index.html"
+        })
+
+
+
+
+
+
+
       }
     } else {
       const newUserRef = push(usersRef);
@@ -64,6 +91,20 @@ function register() {
 
       if (userExists) {
         alert("Login realizado com sucesso");
+      
+        var chaves = Object.keys(users)
+
+        for (let p = 0; p < chaves.length; p ++){
+           const user = users[chaves[p]]
+
+           if (user.username == username){
+              localStorage.setItem('username', user.username)
+              break
+           }
+        }
+        location.href = "meet.html"
+
+        localStorage.setItem("logged", "true")
       } else {
        alert("Usuário ou senha incorreto(s)")
       }
@@ -84,7 +125,9 @@ function register() {
 var titulo = document.querySelector("#text")
 const button_login = document.querySelector("#login_button")
 
+function confirm_signup(){
 
+}
 
 button_login.addEventListener("click", register)
 function resize() {
